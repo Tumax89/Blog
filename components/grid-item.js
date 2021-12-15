@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { Card } from "react-bootstrap";
+import Link from "next/link";
 
 export default ({ post }) => {
   return (
@@ -20,6 +20,7 @@ export default ({ post }) => {
             <Card.Text className="card-date">{post.date}</Card.Text>
           </div>
         </Card.Header>
+
         <Link href={`/${post.slug}`}>
           <a>
             <div className="view overlay">
