@@ -3,6 +3,7 @@ import GridItem from "components/grid-item";
 import { getAllPosts } from "lib/api";
 import Layout from "components/layout";
 import Intro from "components/intro";
+import ListItem from "components/list-item";
 
 export default function Home({ posts }) {
   return (
@@ -17,6 +18,9 @@ export default function Home({ posts }) {
 
       <pre>{/*JSON.stringify(posts, null, 2)*/}</pre>
       <Row className="mb-5">
+        <Col md="10">
+          <ListItem />
+        </Col>
         {posts.map((post) => (
           <Col md="4">
             <GridItem post={post} />

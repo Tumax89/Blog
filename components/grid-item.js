@@ -1,5 +1,5 @@
-import { Card } from "react-bootstrap";
 import Link from "next/link";
+import { Card } from "react-bootstrap";
 
 export default ({ post }) => {
   return (
@@ -20,17 +20,14 @@ export default ({ post }) => {
             <Card.Text className="card-date">{post.date}</Card.Text>
           </div>
         </Card.Header>
-
         <Link href={`/${post.slug}`}>
-          <a>
-            <div className="view overlay">
-              <Card.Img src={post.image} alt="Card image cap" />
-            </div>
-            <Card.Body>
-              <Card.Title className="card-main-title">{post.title}</Card.Title>
-              <Card.Text>{post.subtitle}</Card.Text>
-            </Card.Body>
-          </a>
+          <div className="view overlay">
+            <Card.Img src={post.image} alt="Card image cap" />
+          </div>
+          <Card.Body>
+            <Card.Title className="card-main-title">{post.title}</Card.Title>
+            <Card.Text>{post.subtitle}</Card.Text>
+          </Card.Body>
         </Link>
       </div>
     </Card>
