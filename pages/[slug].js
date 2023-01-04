@@ -3,6 +3,8 @@ import Layout from "components/layout";
 import { getPostBySlug, getAllPosts } from "lib/api";
 import HighlightCode from "components/HighlightCode";
 import BlockContent from "@sanity/block-content-to-react";
+import { useEffect } from "react";
+import moment from "moment";
 
 const serializers = {
   types: {
@@ -22,6 +24,9 @@ const serializers = {
 };
 
 export default ({ post }) => {
+  useEffect(() => {
+    moment.locale("zh-cn");
+  }, []);
   return (
     <Layout>
       <Row>
@@ -35,7 +40,7 @@ export default ({ post }) => {
                 height="50px"
                 width="50px"
               />
-              {post.publisher.title}, {post.date}
+              {post.publisher.title}, {moment(post.date).format("LL")}
             </p>
 
             <h1 className="font-weight-bold blog-detail-header-title mb-0">

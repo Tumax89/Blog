@@ -1,7 +1,13 @@
 import Link from "next/link";
 import { Card } from "react-bootstrap";
+import moment from "moment";
+import { useEffect } from "react";
 
 export default ({ post }) => {
+  useEffect(() => {
+    moment.locale("mn");
+  }, []);
+
   return (
     <Card className={`fj-card`}>
       <div className="card-body-wrapper">
@@ -17,7 +23,9 @@ export default ({ post }) => {
             <Card.Title className="font-weight-bold mb-1">
               {post.publisher.title}
             </Card.Title>
-            <Card.Text className="card-date">{post.date}</Card.Text>
+            <Card.Text className="card-date">
+              {moment(post.date).format("LL")}
+            </Card.Text>
           </div>
         </Card.Header>
         <Link href={`/${post.slug}`}>
