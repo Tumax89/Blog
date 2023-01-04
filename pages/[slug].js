@@ -2,14 +2,21 @@ import { Row, Col } from "react-bootstrap";
 import Layout from "components/layout";
 import { getPostBySlug, getAllPosts } from "lib/api";
 import HighlightCode from "components/HighlightCode";
-const BlockContent = require("@sanity/block-content-to-react");
+import BlockContent from "@sanity/block-content-to-react";
 
 const serializers = {
   types: {
     code: (props) => (
       <HighlightCode language={props.node.language}>
         {props.node.code}
+        <div className="code-filename">{props.node.filename}</div>
       </HighlightCode>
+    ),
+    image: (props) => (
+      <div>
+        <img src={props.node.asset.url} />
+        <div className="code-filename">{props.node.alt}</div>
+      </div>
     ),
   },
 };
@@ -39,8 +46,13 @@ export default ({ post }) => {
               {post.subtitle}
             </h2>
 
-            <img className="img-fluid rounded" src={post.image} alt="" />
+            <img
+              className="img-fluid rounded"
+              src={post.cover_image.url}
+              alt={post.cover_image.alt}
+            />
           </div>
+          <div className="code-filename">{post.cover_image.alt}</div>
           <br />
           <BlockContent
             blocks={post.content}
