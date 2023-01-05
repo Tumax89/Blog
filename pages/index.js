@@ -8,10 +8,10 @@ import ListItem from "components/list-item";
 import { usePosts } from "hooks/usePosts";
 
 export default function Home({ posts }) {
-  const { data, isError, isLoading } = usePosts();
+  const { data, error, isLoading } = usePosts();
 
-  if (isError) return <div>failed to load</div>;
-  if (isLoading) return <div>loading...</div>;
+  if (isError) return <div>Алдаа гарлаа....</div>;
+  if (isLoading) return <div>Ачаалж байна...</div>;
   return (
     <Layout>
       <Row>
