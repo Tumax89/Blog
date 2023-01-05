@@ -1,11 +1,17 @@
 import { Row, Col } from "react-bootstrap";
+
 import GridItem from "components/grid-item";
 import { getAllPosts } from "lib/api";
 import Layout from "components/layout";
 import Intro from "components/intro";
 import ListItem from "components/list-item";
+import { usePosts } from "hooks/usePosts";
 
 export default function Home({ posts }) {
+  const { data, isError, isLoading } = usePosts();
+
+  if (isError) return <div>failed to load</div>;
+  if (isLoading) return <div>loading...</div>;
   return (
     <Layout>
       <Row>
