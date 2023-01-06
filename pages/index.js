@@ -8,9 +8,9 @@ import ListItem from "components/list-item";
 import { usePosts } from "hooks/usePosts";
 
 export default function Home({ posts }) {
-  const { data, error, isLoading } = usePosts();
+  const { data, error, isLoading } = usePosts(posts);
 
-  if (isError) return <div>Алдаа гарлаа....</div>;
+  if (error) return <div>Алдаа гарлаа....</div>;
   if (isLoading) return <div>Ачаалж байна...</div>;
   return (
     <Layout>
@@ -27,7 +27,7 @@ export default function Home({ posts }) {
         <Col md="10">
           <ListItem />
         </Col>
-        {posts.map((post) => (
+        {data.map((post) => (
           <Col md="4">
             <GridItem post={post} />
           </Col>
