@@ -8,17 +8,17 @@
     "start": "next start"
   },
   "dependencies": {
-    "@portabletext/react": "^2.0.0",
-    "@sanity/block-content-to-react": "^3.0.0",
-    "@sanity/client": "^2.23.0",
+    "@sanity/block-content-to-react": "^2.0.7",
+    "@sanity/client": "^2.2.6",
+    "@sanity/image-url": "^0.140.22",
     "bootstrap": "^4.6.0",
-    "highlight.js": "^11.7.0",
-    "moment": "^2.29.4",
+    "highlight.js": "^10.6.0",
+    "moment": "^2.29.1",
     "next": "^13.1.1",
     "react": "^18.2.0",
     "react-bootstrap": "^1.5.0",
     "react-dom": "^18.2.0",
     "sass": "^1.32.8",
-    "swr": "^2.0.0"
+    "swr": "^0.5.3"
   }
 }

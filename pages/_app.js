@@ -1,6 +1,6 @@
 import "styles/index.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "highlight.js/styles/a11y-dark.css";
+import "highlight.js/styles/agate.css";
 import { SWRConfig } from "swr";
 
 const fetcher = async (url) => {
@@ -29,6 +29,7 @@ function MyApp({ Component, pageProps }) {
           if (error.status !== 403 && error.status !== 404) {
             // We can send the error to Sentry,
             // or show a notification UI.
+            // alert("Алдаа");
           }
         },
       }}

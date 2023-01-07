@@ -1,9 +1,10 @@
-import PostHeader from "components/post-header";
-import { getPostBySlug, getAllPosts } from "lib/api";
 import { Row, Col } from "react-bootstrap";
 import Layout from "components/layout";
-import HighlightCode from "components/HighlightCode";
+import { getPostBySlug, getAllPosts } from "lib/api";
 import BlockContent from "@sanity/block-content-to-react";
+import HiglightCode from "components/higlight-code";
+import { urlFor } from "lib/api";
+import PostHeader from "components/post-header";
 
 export default ({ post }) => {
   return (
@@ -12,7 +13,6 @@ export default ({ post }) => {
         <Col md="12">
           <pre>{/*JSON.stringify(post, null, 2)*/}</pre>
           <PostHeader post={post} />
-          <div className="code-filename">{post.cover_image.alt}</div>
           <br />
           <BlockContent
             blocks={post.content}
@@ -28,15 +28,17 @@ export default ({ post }) => {
 const serializers = {
   types: {
     code: (props) => (
-      <HighlightCode language={props.node.language}>
+      <HiglightCode language={props.node.language}>
         {props.node.code}
         <div className="code-filename">{props.node.filename}</div>
-      </HighlightCode>
+      </HiglightCode>
     ),
     image: (props) => (
-      <div>
-        <img src={props.node.asset.url} />
-        <div className="code-filename">{props.node.alt}</div>
+      <div className={`blog-image blog-image-${props.node.position}`}>
+        <img src={urlFor(props.node).height(400).url()} />
+        <div className="code-filename" style={{ textAlign: "center" }}>
+          {props.node.alt}
+        </div>
       </div>
     ),
   },
